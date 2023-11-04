@@ -1,0 +1,44 @@
+[
+  {
+    "type": "vegetable",
+    "name": "prei",
+    "origins": [
+      {
+        "country": {
+          "name": "Netherlands",
+          "distanceFromUtrecht": 0
+        },
+        "months": [ 10,11,12 ]
+      },
+      {
+        "country": {
+          "name": "North-Africa",
+          "distanceFromUtrecht": 12000
+        },
+        "months": [ 12, 1 ]
+      }
+    ],
+    "picture": "./prei.png"
+  },
+  {
+    "type": "fruit",
+    "name": "apple",
+    "origins": [
+      {
+        "country": {
+          "name": "Netherlands",
+          "distanceFromUtrecht": 0
+        },
+        "months": [ 8, 9, 10 ]
+      },
+      {
+        "country": {
+          "name": "Netherlands",
+          "distanceFromUtrecht": 0
+        },
+        "months": [ 3, 4, 5 ]
+      }
+    ],
+    "picture": "./apple.png"
+  }
+]
