@@ -1,4 +1,33 @@
 {
   "name": "fresh-calendar",
-  "version": "0.0.0"
+  "version": "0.0.0",
+  "description": "A fruit and vegetable calendar built with the MEAN stack.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run prepare && concurrently \"npm run start:server\" \"npm run start:client\"",
+    "start:server": "cd server && npm start",
+    "start:client": "cd client && npm start",
+    "prepare": "concurrently \"npm run prepare:server\" \"npm run prepare:client\"",
+    "prepare:server": "cd server && npm install",
+    "prepare:client": "cd client && npm install",
+    "build": "npm run prepare && concurrently \"npm run build:server\" \"npm run build:client\"",
+    "build:server": "cd server && npm run build",
+    "build:client": "cd client && npm run build",
+    "test": "npm run prepare && concurrently \"npm run test:client\" \"npm run test:server\"",
+    "test:client": "cd client && npm test",
+    "test:server": "cd server && npm test"
+  },
+  "author": {
+    "name": "Tim Nederhoff",
+    "email": "info@timnederhoff.nl",
+    "url": "https://timnederhoff.nl"
+  },
+  "license": "Apache 2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timnederhoff/fresh-calendar.git"
+  },
+  "devDependencies": {
+    "concurrently": "^7.1.0"
+  }
 }
