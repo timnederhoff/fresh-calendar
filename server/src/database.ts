@@ -27,7 +27,7 @@ async function applySchemaValidation(db: mongodb.Db) {
       properties: {
         _id: {},
         type: {
-          bsonType: "string",
+          enum: [ "fruit", "vegetable" ],
           description: "'type' is required and is one of 'fruit' or 'vegetable'",
         },
         name: {
@@ -36,55 +36,46 @@ async function applySchemaValidation(db: mongodb.Db) {
         },
         origins: {
           bsonType: "array",
-          items: { $ref: "#/$defs/origin" }
-        },
-        level: {
-          bsonType: "string",
-          description: "'level' is required and is one of 'junior', 'mid', or 'senior'",
-          enum: ["junior", "mid", "senior"],
-        },
-      },
-    },
-    $defs: {
-      origin: {
-        bsonType: "object",
-        properties: {
-          country: {
-            items: { $ref: "#/$defs/country" },
-            description: "country is required"
-          },
-          months: {
-            bsonType: "array",
-            items: {
-              type: "number",
-              description: "month number of the year"
+          items: {
+            bsonType: "object",
+            properties: {
+                country: {
+                    description: "country is required",
+                    items: {
+                        bsonType: "object",
+                        properties: {
+                            name: {
+                                bsonType: "string",
+                                description: "the name of the country"
+                            },
+                            distanceFromUtrecht: {
+                                bsonType: "number",
+                                description: "the number of kilometers from utrecht to the country"
+                            }
+                        }
+                    }
+                },
+                months: {
+                    bsonType: "array",
+                    items: {
+                        bsonType: "number",
+                        description: "month number of the year"
+                    }
+                }
             }
           }
         }
       },
-      country: {
-        bsonType: "object",
-        properties: {
-          name: {
-            bsonType: "string",
-            description: "the name of the country"
-          },
-          distanceFromUtrecht: {
-            bsonType: "number",
-            description: "the number of kilometers from utrecht to the country"
-          }
-        }
-      }
     }
   };
 
   // Try applying the modification to the collection, if the collection doesn't exist, create it
   await db.command({
-    collMod: "employees",
+    collMod: "fruitVegetables",
     validator: jsonSchema
   }).catch(async (error: mongodb.MongoServerError) => {
     if (error.codeName === 'NamespaceNotFound') {
-      await db.createCollection("employees", {validator: jsonSchema});
+      await db.createCollection("fruitVegetables", {validator: jsonSchema});
     }
   });
 }

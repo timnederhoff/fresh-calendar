@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "e671a12f-b2e6-4688-81a9-90046230de44",
+		"name": "Fresh Calendar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get ALL fruits or vegetables",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5200/fruitvegetables",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5200",
+					"path": [
+						"fruitvegetables"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get ONE fruit or vegetable",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5200/fruitvegetables/?id=654a590123730d52d5406577",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5200",
+					"path": [
+						"fruitvegetables",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "654a590123730d52d5406577"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update ONE fruit or vegetable",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"type\": \"vegetable\",\n    \"name\": \"Updated-Broccoli\",\n    \"origins\": [\n      {\n        \"country\": {\n          \"name\": \"Netherlands\",\n          \"distanceFromUtrecht\": 0\n        },\n        \"months\": [ 12, 1, 2 ]\n      }\n    ]\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5200/fruitvegetables/?id=654a590123730d52d5406577",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5200",
+					"path": [
+						"fruitvegetables",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "654a590123730d52d5406577"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put a fruit or vegetable",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"type\": \"fruit\",\n    \"name\": \"Banaan\",\n    \"origins\": [\n      {\n        \"country\": {\n          \"name\": \"Spain\",\n          \"distanceFromUtrecht\": 1300\n        },\n        \"months\": [ 5, 6, 7 ]\n      }\n    ]\n  }\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5200/fruitvegetables",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5200",
+					"path": [
+						"fruitvegetables"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a fruit or vegetable",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"type\": \"vegetable\",\n    \"name\": \"Broccoli\",\n    \"origins\": [\n      {\n        \"country\": {\n          \"name\": \"Netherlands\",\n          \"distanceFromUtrecht\": 0\n        },\n        \"months\": [ 12, 1, 2 ]\n      }\n    ]\n  }\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5200/fruitvegetables/?id=654a590123730d52d5406577",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5200",
+					"path": [
+						"fruitvegetables",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "654a590123730d52d5406577"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
