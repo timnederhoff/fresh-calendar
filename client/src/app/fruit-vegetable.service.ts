@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 import * as fruitVegetables from './mock-data.json';
 import FruitVegetable from "./fruit-vegetable";
@@ -8,10 +11,14 @@ import FruitVegetable from "./fruit-vegetable";
 })
 export class FruitVegetableService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getAll(): FruitVegetable[] {
-    return fruitVegetables;
+  getAll(): Observable<FruitVegetable[]> {
+    const url = 'http://localhost:5200/fruitvegetables'
+    return this.http.get<FruitVegetable[]>(url)
+      .pipe(
+        tap(_ => console.log('fetched fruit and vegetables'))
+      )
   }
 
 }

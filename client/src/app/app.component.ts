@@ -16,7 +16,8 @@ export class AppComponent {
   fruitVegetables: FruitVegetable[] = []
 
   getFruitVegetables() {
-    this.fruitVegetables = this.fruitVegetableService.getAll();
+    this.fruitVegetableService.getAll()
+      .subscribe(fruitVegetables => this.fruitVegetables = fruitVegetables);
   }
 
   ngOnInit(): void {

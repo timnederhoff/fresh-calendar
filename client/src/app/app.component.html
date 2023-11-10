@@ -1,6 +1,3 @@
 <div>
-  <p>
-    {{fruitVegetables[0].name}}
-  </p>
+  <li *ngFor="let item of fruitVegetables">{{item.name}} - {{item.origins[0].country.name}}</li>
 </div>
-
